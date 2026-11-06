@@ -3,7 +3,7 @@
   "title": "Quick Opener",
   "description": "Open the selected text as a path \u2014 code in Zed, folders in Finder, images/video in Quick Look",
   "icon": "icon.png",
-  "author": "harsshavardan",
+  "author": "harssha6",
   "categories": [
     "Productivity",
     "Developer Tools"
@@ -153,5 +153,5 @@
     "publish": "npx @raycast/api@latest publish",
     "test": "node --test tests/*.test.cjs"
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
