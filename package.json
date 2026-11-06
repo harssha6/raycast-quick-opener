@@ -1,0 +1,157 @@
+{
+  "name": "quick-opener",
+  "title": "Quick Opener",
+  "description": "Open the selected text as a path \u2014 code in Zed, folders in Finder, images/video in Quick Look",
+  "icon": "icon.png",
+  "author": "harsshavardan",
+  "categories": [
+    "Productivity",
+    "Developer Tools"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "open-selected-path",
+      "title": "Open Selected Path",
+      "subtitle": "Quick Opener",
+      "description": "Open selected text (or clipboard) as a path in the right app \u2014 Zed for code, Finder for folders, Quick Look for media",
+      "mode": "no-view",
+      "keywords": [
+        "open",
+        "path",
+        "file",
+        "zed",
+        "finder",
+        "quicklook"
+      ]
+    },
+    {
+      "name": "open-path",
+      "title": "Open Path...",
+      "subtitle": "Quick Opener",
+      "description": "Inspect a path from selection/clipboard and choose how to open it",
+      "mode": "view",
+      "keywords": [
+        "open",
+        "path",
+        "file",
+        "zed",
+        "finder"
+      ],
+      "arguments": [
+        {
+          "name": "path",
+          "placeholder": "~/Projects/demo/README.md",
+          "type": "text",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "editor",
+      "title": "Editor for Code & Text",
+      "description": "Where code, config and text files open",
+      "type": "dropdown",
+      "required": false,
+      "default": "zed",
+      "data": [
+        {
+          "title": "Zed",
+          "value": "zed"
+        },
+        {
+          "title": "VS Code",
+          "value": "vscode"
+        },
+        {
+          "title": "Cursor",
+          "value": "cursor"
+        },
+        {
+          "title": "TextEdit",
+          "value": "textedit"
+        }
+      ]
+    },
+    {
+      "name": "mediaMode",
+      "title": "Images & Video",
+      "description": "Quick Look first, or open directly in Preview / default app",
+      "type": "dropdown",
+      "required": false,
+      "default": "quicklook",
+      "data": [
+        {
+          "title": "Quick Look",
+          "value": "quicklook"
+        },
+        {
+          "title": "Preview (images/PDF)",
+          "value": "preview"
+        },
+        {
+          "title": "Default App",
+          "value": "default"
+        }
+      ]
+    },
+    {
+      "name": "sshTerminal",
+      "title": "SSH Terminal (for VPS folders/files)",
+      "description": "Where SSH sessions open for remote folders, and the fallback for remote files",
+      "type": "dropdown",
+      "required": false,
+      "default": "terminal",
+      "data": [
+        {
+          "title": "Terminal",
+          "value": "terminal"
+        },
+        {
+          "title": "iTerm2",
+          "value": "iterm"
+        }
+      ]
+    },
+    {
+      "name": "defaultSshHost",
+      "title": "Default VPS (optional)",
+      "description": "e.g. root@myvps \u2014 adds an Open-on-VPS action for missing local paths. Leave empty to auto-use the first Host in ~/.ssh/config",
+      "type": "textfield",
+      "required": false,
+      "placeholder": "root@myvps"
+    },
+    {
+      "name": "fallbackToClipboard",
+      "title": "Fall back to clipboard",
+      "description": "If no text is selected, try the clipboard",
+      "type": "checkbox",
+      "required": false,
+      "default": true,
+      "label": "Use clipboard when selection is empty"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.79.0",
+    "@raycast/utils": "^1.17.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.8",
+    "@types/node": "^22.19.17",
+    "@types/react": "^19.0.10",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "ray build -e dist -o ./dist-build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "version": "0.1.0"
+}
