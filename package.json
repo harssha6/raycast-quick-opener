@@ -3,7 +3,7 @@
   "title": "Quick Opener",
   "description": "Open the selected text as a path \u2014 code in Zed, folders in Finder, images/video in Quick Look",
   "icon": "icon.png",
-  "author": "harssha6",
+  "author": "harssha_vardan",
   "categories": [
     "Productivity",
     "Developer Tools"
