@@ -1,6 +1,6 @@
 # Quick Opener
 
-Select a path anywhere : terminal, browser, Slack, notes : hit the hotkey, and it opens in the right app.
+Select a path in a terminal, browser, chat, or note, then run Quick Opener to open it in the right app.
 
 - `~/Projects/demo/README.md` → **Zed** (or your chosen editor)
 - a folder → **Finder**
@@ -21,7 +21,17 @@ Select a path anywhere : terminal, browser, Slack, notes : hit the hotkey, and i
 
 - **Editor for Code & Text** : Zed (default), VS Code, Cursor, or TextEdit
 - **Images & Video** : Quick Look (default), Preview, or Default App
+- **SSH Terminal** : Terminal (default) or iTerm2
+- **Default VPS** : an optional SSH host alias or `user@host`; when empty, the first supported host in `~/.ssh/config` is used for the extra remote action on missing local paths
 - **Fall back to clipboard** : on by default
+
+## Setup
+
+Requires Raycast on macOS. Choose an installed editor in the extension's preferences; TextEdit works without an additional editor installation. Install your editor's command-line tool to support line and column navigation where available.
+
+Assign a hotkey to **Open Selected Path** in Raycast Settings → Extensions → Quick Opener. If Raycast asks for Accessibility access when reading selected text, grant it in macOS System Settings → Privacy & Security → Accessibility. You can also copy a path to the clipboard or pass it to **Open Path...** as an argument.
+
+SSH actions use the macOS `ssh` and `scp` tools and your existing SSH configuration. Set up authentication and accept the server's host key in Terminal before using remote editor or preview actions. VS Code and Cursor need their Remote SSH support for remote editing. Terminal actions may prompt macOS to allow Raycast to control Terminal or iTerm2.
 
 ## How paths are cleaned
 
@@ -29,7 +39,10 @@ Quotes, backticks, markdown links `[x](/path)`, `file://` URLs, and trailing pun
 
 ## Install permanently (no dev server)
 
+To build from source, use Node.js 22.22.2 or later and install dependencies first:
+
 ```bash
+npm ci
 npm run build   # outputs the importable bundle to ./dist-build
 ```
 
@@ -40,7 +53,7 @@ Note: while `npm run dev` is running, Raycast uses the dev copy. Stop it (Ctrl+C
 ## Develop
 
 ```bash
-npm install
+npm ci
 npm run dev   # ray develop : loads it into Raycast with hot reload
 npm run build
 npm run lint
@@ -74,4 +87,4 @@ Remote editor compatibility depends on the editor and its SSH support. Use **SSH
 
 ## Raycast Store
 
-The current package can be imported locally. A Store release requires a valid Raycast author profile, screenshots and a reviewed submission to `raycast/extensions`. See [Raycast's publishing guide](https://developers.raycast.com/basics/publish-an-extension).
+The extension is prepared for submission under the Raycast profile `harssha_vardan`. The maintainer runs `npm run publish` locally and authenticates with their own GitHub account. Raycast's CLI opens a pull request on `raycast/extensions`; the extension becomes available in the Store after Raycast reviews and merges that pull request. See [Raycast's publishing guide](https://developers.raycast.com/basics/publish-an-extension).

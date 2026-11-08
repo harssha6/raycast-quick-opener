@@ -9,6 +9,7 @@ import {
   showInFinder,
   showToast,
   trash,
+  Keyboard,
 } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { existsSync, mkdirSync, statSync, writeFileSync } from "fs";
@@ -77,7 +78,7 @@ export default function Command(props: Args) {
           actions={
             <ActionPanel>
               <Action
-                title="Re-check Selection / Clipboard"
+                title="Re-Check Selection / Clipboard"
                 icon={Icon.ArrowClockwise}
                 onAction={refresh}
               />
@@ -164,7 +165,7 @@ function PathItem({
                   <Action
                     title="Download & Quick Look"
                     icon={Icon.Eye}
-                    shortcut={{ modifiers: ["cmd"], key: "y" }}
+                    shortcut={Keyboard.Shortcut.Common.ToggleQuickLook}
                     onAction={() =>
                       run(async () => {
                         const local = await downloadRemote(item);
@@ -178,7 +179,7 @@ function PathItem({
                   <Action
                     title={`Open Remotely in ${label(prefs.editor)}`}
                     icon={Icon.Code}
-                    shortcut={{ modifiers: ["cmd"], key: "e" }}
+                    shortcut={Keyboard.Shortcut.Common.Edit}
                     onAction={() =>
                       run(
                         () => openRemoteInEditor(item, prefs),
@@ -187,7 +188,7 @@ function PathItem({
                     }
                   />
                   <Action
-                    title="Ssh Terminal Here"
+                    title="SSH Terminal Here"
                     icon={Icon.Terminal}
                     shortcut={{ modifiers: ["cmd"], key: "t" }}
                     onAction={() =>
@@ -195,7 +196,7 @@ function PathItem({
                     }
                   />
                   <Action
-                    title="Copy Ssh Command"
+                    title="Copy SSH Command"
                     icon={Icon.Clipboard}
                     onAction={async () => {
                       await Clipboard.copy(
@@ -219,7 +220,7 @@ function PathItem({
                   <Action
                     title="Quick Look"
                     icon={Icon.Eye}
-                    shortcut={{ modifiers: ["cmd"], key: "y" }}
+                    shortcut={Keyboard.Shortcut.Common.ToggleQuickLook}
                     onAction={() => {
                       quickLook(item);
                       showToast({
@@ -233,7 +234,7 @@ function PathItem({
                 <Action
                   title={`Open in Editor (${label(prefs.editor)})`}
                   icon={Icon.Code}
-                  shortcut={{ modifiers: ["cmd"], key: "e" }}
+                  shortcut={Keyboard.Shortcut.Common.Edit}
                   onAction={() =>
                     run(
                       () => openInEditor(item, prefs.editor),
@@ -272,7 +273,7 @@ function PathItem({
                 <Action
                   title="Copy Path"
                   icon={Icon.Clipboard}
-                  shortcut={{ modifiers: ["cmd", "shift"], key: "c" }}
+                  shortcut={Keyboard.Shortcut.Common.Copy}
                   onAction={async () => {
                     await Clipboard.copy(display);
                     await showToast({
@@ -380,9 +381,9 @@ function PathItem({
             </>
           )}
           <Action
-            title="Re-check Selection / Clipboard"
+            title="Re-Check Selection / Clipboard"
             icon={Icon.ArrowClockwise}
-            shortcut={{ modifiers: ["cmd"], key: "r" }}
+            shortcut={Keyboard.Shortcut.Common.Refresh}
             onAction={onMutate}
           />
         </ActionPanel>
