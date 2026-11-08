@@ -1,7 +1,7 @@
 {
   "name": "quick-opener",
   "title": "Quick Opener",
-  "description": "Open the selected text as a path \u2014 code in Zed, folders in Finder, images/video in Quick Look",
+  "description": "Open selected paths in your preferred editor, Finder, or Quick Look, with support for SSH paths and URLs.",
   "icon": "icon.png",
   "author": "harssha_vardan",
   "categories": [
@@ -9,12 +9,18 @@
     "Developer Tools"
   ],
   "license": "MIT",
+  "platforms": [
+    "macOS"
+  ],
+  "engines": {
+    "node": ">=22.22.2"
+  },
   "commands": [
     {
       "name": "open-selected-path",
       "title": "Open Selected Path",
       "subtitle": "Quick Opener",
-      "description": "Open selected text (or clipboard) as a path in the right app \u2014 Zed for code, Finder for folders, Quick Look for media",
+      "description": "Open selected text (or clipboard) as a path in the right app — Zed for code, Finder for folders, Quick Look for media",
       "mode": "no-view",
       "keywords": [
         "open",
@@ -118,7 +124,7 @@
     {
       "name": "defaultSshHost",
       "title": "Default VPS (optional)",
-      "description": "e.g. root@myvps \u2014 adds an Open-on-VPS action for missing local paths. Leave empty to auto-use the first Host in ~/.ssh/config",
+      "description": "e.g. root@myvps — adds an Open-on-VPS action for missing local paths. Leave empty to auto-use the first Host in ~/.ssh/config",
       "type": "textfield",
       "required": false,
       "placeholder": "root@myvps"
@@ -134,14 +140,13 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.79.0",
-    "@raycast/utils": "^1.17.0"
+    "@raycast/api": "^2.11.1"
   },
   "devDependencies": {
-    "@raycast/eslint-config": "^1.0.8",
+    "@raycast/eslint-config": "^2.2.0",
     "@types/node": "^22.19.17",
     "@types/react": "^19.0.10",
-    "eslint": "^8.57.0",
+    "eslint": "^10.14.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
   },
